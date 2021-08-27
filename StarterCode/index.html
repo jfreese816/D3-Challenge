@@ -3,57 +3,70 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>D3Times</title>
+  <title>Daily Bugle</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <!-- <link rel="stylesheet" href="assets/bootstrap.min.css"> -->
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/d3Style.css">
 
 </head>
 
 <body>
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12 col-md-12">
-        <h1>D3Times</h1>
+  <div class="jumbotron" style="text-align: center;">
+    <h1 class="newspaperHeading">DAILY <img src="Images/Daily-Bugle-2.png" class = "logo" alt="DB" />BUGLE</h1>
+  </div>
+  <div class="container-fluid">
+    
+    <div class="row" style="justify-content: center;">  
+      <div class="col-md-9" style="align-items: center;">
+        <div class="article" style="text-align: center;">
+          <h2 class="articleHeading">Correlations Discovered Between Health Risks and Age, Income</h2>
+          <h3 class="byline" style="text-align: center;">by MATTHEW B. JENSEN</h3>
+          <p style="text-align: left;">
+            New links between health risks and measures of age and income have been discovered by data analysts across the United States! This breaking news summary highlights the salient facts below:
+            <br><br>
+            <strong>Obesity</strong>
+            <br>
+              - With the stongest correlation yet, obesity and median household income have a clearly visible negative correlation. To clarify, obesity rates are lower in states with a higher median household income.<br>
+              - As related to poverty, a slightly positive correlation exists between states' obesity rates and the percentange of the states' population living in poverty. <br>
+              - Age and Obesity do not appear to have a meaningful correlation at the state level. <br>
+              </p>
+
+          <p style="text-align: left;"><strong>Smoking</strong><br>
+              - Smoking and poverty have a visible positive correlation. <br>
+              - Regarding smoking and age, most states fall within a ten year age range for the median smoker's age. Just four states have median soker ages falling outside of ages 32 to 42 in the entire dataset. <br>
+              - Similar to obesity and median household income, we see a strong negative correlation between the percentange of smokers in a state and the median household income.</p>
+
+          <p style="text-align: left;"><strong>Healthcare</strong><br>
+              - Also of note, we see a strong positive correlation between the percentange of residents lacking healthcare and the percentange of residents in poverty. <br>
+              - Age group seems to show no reasonable correlation, and most datapoints fall between 32 and 42. <br>
+              - Though weaker than the correlations of smoking and obesity to median household income, the percentange of residents lacking healthcare still show a visible negative correlation to median household income by state.</p>
+        </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-xs-12  col-md-9">
+    <br>
+    <div class="row" style="justify-content: center;">
+      <h4 style="font-style: italic;">Please explore the data in the interactive graph below. Click on the axis labels to change the data within the chart.</h4>
+    </div>
+
+    <div class="row" style="justify-content: center;">
+      <div class="col-xs-12" style="border: thin solid black;">
         <div id="scatter">
-          <!-- We append our chart here. -->
         </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-12  col-md-9">
-        <div class="article">
-          <h2>Correlations Discovered Between Health Risks and Age, Income</h2>
-          <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor
-            quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean
-            ultricies mi vitae est. Mauris placerat eleifend leo.</p>
-
-          <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor
-            quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean
-            ultricies mi vitae est. Mauris placerat eleifend leo.</p>
-
-          <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor
-            quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean
-            ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+        <div id='linRegress'>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Footer-->
-  <div id="footer">
-    <p>The Coding Boot Camp&copy;2016</p>
-  </div>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
   <script src="https://d3js.org/d3.v5.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.9.1/d3-tip.js"></script>
+  <script src='https://unpkg.com/simple-statistics@7.3.0/dist/simple-statistics.min.js'></script>
   <script type="text/javascript" src="assets/js/app.js"></script>
+  <script type="text/javascript" src="assets/js/functions.js"></script>
 
 </body>
 
